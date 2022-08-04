@@ -18,9 +18,9 @@
             </label>
         </div>  
     </div>
-      <table class="table">
+      <table class="table  table table-striped table-hover">
         <thead> 
-            <tr>
+            <tr class="bg-primary">
                 <th>nome</th>
                 <th>description</th>
                 <th>image</th>
@@ -33,7 +33,7 @@
               <tr>
                 <td>{{$item->nome}}</td>
                 <td>{{$item->description}}</td>
-                <td><img src="images/{{$item->image}}"style="width:80px;height:50px"></td> 
+                <td><img src="images/{{$item->image}}" style="width:80px;height:50px"></td> 
                 <td>
                     <form method="POST" action="{{route('formation.destroy',$item->id)}}">
                         @csrf 

@@ -31,11 +31,18 @@ class ProjetController extends Controller
     public function store(Request $request)
     {
         $request -> validate([
-            'title' => 'required',
-            'description' => 'required',
-            'image' => 'required' 
+            'title'=>'required', 
+            'description'=>'required', 
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' 
         ]);
-        projet::create($request->all());
+        $input = $request->all();
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        } 
+        projet::create($request->all()); 
         return redirect()->route('projet.index')->with('success','Opération terminée avec succès'); 
     }
 

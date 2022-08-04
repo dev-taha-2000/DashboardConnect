@@ -32,8 +32,8 @@
            @foreach ($projets as $item) 
               <tr>
                 <td>{{$item->title}}</td> 
-                <td>{{$item->description}}</td>
-                <td>{{$item->image}}</td>  
+                <td>{{$item->description}}</td> 
+                <td><img src="images/{{$item->image}}" style="width:80px;height:50px"></td> 
                 <td class="text-center">
                     <form method="POST" action="{{route('projet.destroy',$item->id)}}"> 
                         @csrf 

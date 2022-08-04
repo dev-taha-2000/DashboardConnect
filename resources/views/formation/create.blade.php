@@ -4,7 +4,7 @@
 @endsection 
 @section('content')
 <div class="w-50 m-auto" > 
-    <form method="POST" action="{{route('formation.store')}}" enctype="multipart/form-data"> 
+    <form method="POST" action="{{route('formation.store')}}" enctype="multipart/form-data">  
         @csrf
         <h1>Create Formation</h1> 
         <div class="mb-3">
