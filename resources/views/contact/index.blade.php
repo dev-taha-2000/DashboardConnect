@@ -8,10 +8,7 @@
     <div class="topbar d-flex justify-content-between">  
         <div class="toggle">
             <ion-icon name="menu-outline"></ion-icon>
-        </div>
-       <a href="{{url('formation/create')}}"> 
-        <button type="button" class="btn btn-outline-primary">create</button>
-       </a>
+        </div> 
         <div class="search">
             <label>
                 <input type="text" placeholder="Recherche">
@@ -22,30 +19,25 @@
         <thead> 
             <tr>
                 <th>nome</th>
-                <th>description</th>
-                <th>image</th>
-                <th>delete</th>
-                <th>edit</th>
+                <th>email</th>
+                <th>subject</th>
+                <th>message</th> 
+                <th>delete</th> 
             </tr>
         </thead>
         <tbody>
-           @foreach ($formations as $item)
+           @foreach ($contacts as $item)  
               <tr>
                 <td>{{$item->nome}}</td>
-                <td>{{$item->description}}</td>
-                <td>{{$item->image}}</td> 
-                <td class="text-center">
-                    <form method="POST" action="{{route('formation.destroy',$item->id)}}">
+                <td>{{$item->email}}</td>
+                <td>{{$item->subject}}</td> 
+                <td>{{$item->message}}</td> 
+                <td>  
+                    <form method="POST" action="{{route('contact.destroy',$item->id)}}">
                         @csrf 
                         @method('DELETE') 
                         <button type="submit" class="btn btn-outline-success">delete</button>
                     </form> 
-                </td>
-                <td class="text-center">
-                  <a href="{{route('formation.edit',$item->id)}}">   
-                    <button type="button" class="btn btn-outline-danger">edit</button>
-                  </a>
-                </td> 
               </tr>
            @endforeach
         </tbody>

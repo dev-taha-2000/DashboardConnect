@@ -14,7 +14,8 @@ class ProjetController extends Controller
      */
     public function index()
     {
-        //
+        $projets=projet::latest()->paginate('5');
+        return view('projet/index',compact('projets'));   
     }
 
     /**
@@ -24,62 +25,39 @@ class ProjetController extends Controller
      */
     public function create()
     {
-        //
+       return view('projet/create'); 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request -> validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required' 
+        ]);
+        projet::create($request->all());
+        return redirect()->route('projet.index')->with('success','Opération terminée avec succès'); 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\projet  $projet
-     * @return \Illuminate\Http\Response
-     */
-    public function show(projet $projet)
+    public function edit(projet $projet)  
+    { 
+        return view('projet/edit',compact('projet')); 
+    }
+
+    public function update(Request $request, projet $projet) 
     {
-        //
+        $request -> validate([
+            'title' => 'required',
+            'description' => 'required', 
+            'image' => 'required' 
+        ]); 
+        $projet->update($request->all());  
+        return redirect()->route('projet.index')->with('success','Opération terminée avec succès'); 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\projet  $projet
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(projet $projet)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\projet  $projet
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, projet $projet)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\projet  $projet
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(projet $projet)
     {
-        //
-    }
+        $projet->delete();
+        return redirect()->route('projet.index')->with('success','Opération terminée avec succès');  
+    } 
 }

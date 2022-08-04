@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormationController;
+use App\Http\Controllers\ProjetController; 
+use App\Http\Controllers\StaffController; 
+use App\Http\Controllers\ContactController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +22,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::resource('/formation', FormationController::class); 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');  
-// Route::get('/formation', [App\Http\Controllers\FormationController::class, 'index']);   
-// Route::get('/formation/create', [App\Http\Controllers\FormationController::class, 'create']);    
-// Route::post('/formation.store', [App\Http\Controllers\FormationController::class, 'store']);       
+Route::resource('/staff', StaffController::class);   
+Route::resource('/projet', ProjetController::class);  
+Route::resource('/contact', ContactController::class);  
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');        

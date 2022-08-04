@@ -13,7 +13,7 @@
     --white: #fff;
     --gray: #f5f5f5;
     --black1: #222;
-    --black2: #999;
+    --black2: #999; 
 }
 
 body {
@@ -30,7 +30,7 @@ body {
     width: 300px;
     height: 100%;
     background: var(--blue);
-    border-left: 10px solid var(--blue);
+    border-left: 10px solid var(--blue); 
     transition: 0.5s;
     overflow: hidden;
 }
@@ -67,7 +67,7 @@ body {
     width: 100%;
     display: flex;
     text-decoration: none;
-    color: var(--white);
+    color: var(--white); 
 }
 
 .navigation ul li:hover a, .navigation ul li.hovered a{
@@ -84,7 +84,7 @@ body {
 }
 
 .navigation ul li a .icon ico-icon{
-    font-size: 1.75rem;
+    font-size: 1.75rem; 
 }
 
 .navigation ul li a .title{
@@ -449,6 +449,6 @@ body {
     color: #fff;
     position: fixed;
     right: 0;
-    left: initial;
+    left: initial; 
 }
 } 

@@ -14,7 +14,8 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        $staffs = staff::latest()->paginate(5);
+        return view('staff/index',compact('staffs'));  
     }
 
     /**
@@ -24,7 +25,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        //
+        return view('staff/create');  
     }
 
     /**
@@ -35,19 +36,16 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request ->validate([
+            'nome'=>'required',
+            'profession'=>'required',
+            'definition'=>'required',
+            'image'=>'required' 
+       ]);
+       staff::create($request->all());
+       return redirect()->route('staff.index')->with('success','Opération terminée avec succès'); 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\staff  $staff
-     * @return \Illuminate\Http\Response
-     */
-    public function show(staff $staff)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -57,7 +55,7 @@ class StaffController extends Controller
      */
     public function edit(staff $staff)
     {
-        //
+       return view('staff/edit',compact('staff'));
     }
 
     /**
@@ -69,7 +67,14 @@ class StaffController extends Controller
      */
     public function update(Request $request, staff $staff)
     {
-        //
+        $request ->validate([
+            'nome'=>'required',
+            'profession'=>'required',
+            'definition'=>'required',
+            'image'=>'required' 
+       ]);
+       $staff->update($request->all()); 
+       return redirect()->route('staff.index')->with('success','Opération terminée avec succès'); 
     }
 
     /**
@@ -80,6 +85,7 @@ class StaffController extends Controller
      */
     public function destroy(staff $staff)
     {
-        //
+        $staff->delete();
+        return redirect()->route('staff.index')->with('success','Opération terminée avec succès'); 
     }
 }
