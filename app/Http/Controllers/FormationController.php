@@ -39,9 +39,17 @@ class FormationController extends Controller
         $request->validate([
             'nome'=>'required',
             'description'=>'required', 
-            'image'=>'required'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        formation::create($request->all());
+        $input = $request->all();
+   
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
+        formation::create($input);
         return redirect()->route('formation.index')->with('success','Opération terminée avec succès'); 
     }
 

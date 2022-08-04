@@ -16,7 +16,7 @@
             <label>
                 <input type="text" placeholder="Recherche">
             </label>
-        </div> 
+        </div>  
     </div>
       <table class="table">
         <thead> 
@@ -33,15 +33,15 @@
               <tr>
                 <td>{{$item->nome}}</td>
                 <td>{{$item->description}}</td>
-                <td>{{$item->image}}</td> 
-                <td class="text-center">
+                <td><img src="images/{{$item->image}}"style="width:80px;height:50px"></td> 
+                <td>
                     <form method="POST" action="{{route('formation.destroy',$item->id)}}">
                         @csrf 
                         @method('DELETE') 
                         <button type="submit" class="btn btn-outline-success">delete</button>
                     </form> 
                 </td>
-                <td class="text-center">
+                <td >
                   <a href="{{route('formation.edit',$item->id)}}">   
                     <button type="button" class="btn btn-outline-danger">edit</button>
                   </a>
