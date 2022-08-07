@@ -8,7 +8,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-center d-flex justify-content-center aligh-item-center"> 
-                    <img src="image/logo.png" alt="logo" style="height:50px">
+                    <img src="images/logo.png" alt="logo" style="height:50px">
                     <h1>Login</h1>
                 </div> 
                 <div class="card-body">

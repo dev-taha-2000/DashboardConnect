@@ -35,15 +35,15 @@
                 <td>{{$item->nome}}</td> 
                 <td>{{$item->profession}}</td> 
                 <td>{{$item->definition}}</td> 
-                <td>{{$item->image}}</td>  
-                <td class="text-center">
+                <td><img src="images/{{$item->image}}" alt="image" style="width:80px;height:50px"></td>  
+                <td >
                     <form method="POST" action="{{route('staff.destroy',$item->id)}}"> 
                         @csrf 
                         @method('DELETE') 
                         <button type="submit" class="btn btn-outline-success">delete</button>
                     </form> 
                 </td>
-                <td class="text-center">
+                <td >
                   <a href="{{route('staff.edit',$item->id)}}">   
                     <button type="button" class="btn btn-outline-danger">edit</button>
                   </a>

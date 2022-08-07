@@ -17,10 +17,10 @@
                 <input type="text" placeholder="Recherche">
             </label>
         </div>  
-    </div>
+    </div>     
       <table class="table  table table-striped table-hover">
         <thead> 
-            <tr class="bg-primary">
+            <tr class="bg-primary">      
                 <th>nome</th>
                 <th>description</th>
                 <th>image</th>

@@ -4,21 +4,21 @@
 @endsection 
 @section('content')
 <div class="w-50 m-auto" > 
-    <form method="POST" action="{{route('projet.store')}}"> 
+    <form method="POST" action="{{route('projet.store')}}" enctype="multipart/form-data"> 
         @csrf
         <h1>Create projet</h1> 
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">title</label>   
-          <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"> 
+          <input type="text" name="title" class="form-control">  
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">description</label>
-          <textarea name="description" class="form-control" id="" ></textarea>
+          <textarea name="description" class="form-control" ></textarea>
         </div>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">image</label>   
-            <input type="file" name="image" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"> 
-          </div>
+            <label for="exampleInputEmail1" class="form-label">image</label>    
+            <input type="file" name="image" class="form-control"> 
+        </div>
         <button type="submit" class="btn btn-primary w-100">save</button> 
     </form>
 </div>

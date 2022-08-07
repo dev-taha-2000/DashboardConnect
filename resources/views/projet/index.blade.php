@@ -34,14 +34,14 @@
                 <td>{{$item->title}}</td> 
                 <td>{{$item->description}}</td> 
                 <td><img src="images/{{$item->image}}" style="width:80px;height:50px"></td> 
-                <td class="text-center">
+                <td>
                     <form method="POST" action="{{route('projet.destroy',$item->id)}}"> 
                         @csrf 
                         @method('DELETE') 
                         <button type="submit" class="btn btn-outline-success">delete</button>
                     </form> 
                 </td>
-                <td class="text-center">
+                <td>
                   <a href="{{route('projet.edit',$item->id)}}">   
                     <button type="button" class="btn btn-outline-danger">edit</button>
                   </a>

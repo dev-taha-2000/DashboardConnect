@@ -42,7 +42,14 @@ class StaffController extends Controller
             'definition'=>'required',
             'image'=>'required' 
        ]);
-       staff::create($request->all());
+       $input = $request->all(); 
+       if ($image = $request->file('image')){  
+           $destinationPath = 'images/';
+           $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+           $image->move($destinationPath, $profileImage);
+           $input['image'] = "$profileImage";
+       }  
+       staff::create( $input);
        return redirect()->route('staff.index')->with('success','Opération terminée avec succès'); 
     }
 
